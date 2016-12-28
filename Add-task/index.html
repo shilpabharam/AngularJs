@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello Name </title>
+
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="app.js"></script>
+<style>
+	span.done-true{
+	color: grey;
+	font-style:italic;
+	text-decoration: line-through;
+	}
+	
+	span[contenteditable = "true"]{
+	backgrount:grey;
+	padding: 3px;
+	}
+</style>
+
+<body ng-app="helloApp">
+	<div ng-controller="helloCntrl">
+	  <div>Add the task.</div>
+	  <input type="text" ng-keydown="searchEnter()" ng-model="task" ></br>
+		<div>
+		
+		<ul>
+			<li ng-repeat="oneTask in tasks">
+			
+			<input type="checkbox" ng-model="oneTask.status">
+			    <span ng-dblclick="contentEdit(oneTask.taskMsg)" ng-keyup ="enterAgain(oneTask.taskMsg);"ng-model="oneTask.taskMsg" class="done-{{oneTask.status}}">
+			    {{oneTask.taskMsg}}</li></span>
+		</ul>
+		</div>
+	</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
