@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app="myApp"ng-controller="myCtrl" >
+
+<div >
+<input type="text" ng-model="username"></br>
+<input type="password" ng-model="password"></br>
+</div>
+
+<div ng-controller="loginDire">
+<input type="button" value="login" ng-model="submit" ng-click="submit()">
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('myCtrl', function($rootScope,$scope) {
+    $rootScope.user = $scope.username;
+	$scope.pass = $scope.password;
+	if($scope.user == 'shilpa'  && $scope.pass == 'shilpa'){
+		$rootScope.loggedIn = true;
+	}	
+});
+app.controller('loginDire', function($rootScope,$scope) {
+    $scope.submit = function(){
+		if($rootScope.loggedIn == true){
+			alert("login succsess" +$rootScope.user);
+		}
+		else{
+			alert("fail" +$rootScope.user);
+		}
+	}
+});
+</script>
+
+<p>Notice that controller's color variable does not overwrite the rootScope's color value.</p>
+
+</body>
+</html>
+

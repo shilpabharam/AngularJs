@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+All Searchbox <input type="text" ng-model="searchBox.$"></br>
+Name Searchbox <input type="text" ng-model="searchBox.Name"></br>
+Address Searchbox <input type="text" ng-model="searchBox.Address"></br>
+turnOver Searchbox <input type="text" ng-model="searchBox.turnOver">
+<ul>
+<li ng-repeat="people in peoples | filter : searchBox"> 
+{{people.Name + ':' + people.Address + ':' + people.turnOver}}
+</li>
+</ul>
+
+</div>
+<script>
+var filex = {
+	"records":[
+		{
+		"Name" : "Devjiva",
+		"Address" : "Pune",
+		"turnOver" : 50000
+		},
+		{
+		"Name" : "Syntel",
+		"Address" : "Mumbai",
+		"turnOver" : 50000
+		},
+		{
+		"Name" : "Infosys",
+		"Address" : "Delhi",
+		"turnOver" : 10000
+		},
+		{
+		"Name" : "Tech Mahindra",
+		"Address" : "Delhi",
+		"turnOver" : 30000
+		}
+	]
+}
+
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+
+
+$scope.peoples = filex.records;
+console.log($scope.peoples );
+});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+<input type="text" ng-model="searchBox">
+<ul>
+<li ng-repeat="people in peoples | filter : searchBox"> 
+{{people.Name + ':' + people.Address}}
+
+</li>
+</ul>
+
+</div>
+<script>
+
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope,$http) {
+$scope.filex = {
+	"records":[
+		{
+		"Name" : "Devjiva",
+		"Address" : "Pune"
+		},
+		{
+		"Name" : "Devjiva",
+		"Address" : "Mumbai"
+		},
+		{
+		"Name" : "Devjiva",
+		"Address" : "Delhi"
+		}
+	]
+}
+
+$scope.peoples = $scope.filex.records;
+console.log($scope.peoples );
+
+ $http.get('welcome.json').then( function(response) { 
+						console.log(response)
+                           $scope.students = response; 
+                        }); 
+});
+</script>
+
+</body>
+</html>
+

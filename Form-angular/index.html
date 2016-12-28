@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+ <style>
+     .error{
+         color:red;
+     }
+</style>
+	</head>   
+	<body ng-app="myApp" ng-controller="mainController">
+        <form name="myForm" style="border: 1px solid black; width:250px;">
+            First Name: <input type="text" ng-model="firstname" name="firstName" required minlength="5" />
+                <div ng-messages="myForm.firstName.$error">
+                    <div ng-message="required"  class="error"> Please Enter  Name</div>
+                    <div ng-message="minlength"  class="error" >Enter atleast Five</div>
+                </div></br>
+        
+            Last Name:<input type="text" ng-model="lastName" name="lastName" required minlength="5" />
+            <div ng-messages="myForm.lastName.$error">
+            <div ng-message="required" class="error"> Please Enter Last Name</div>
+                <div ng-message="minlength"  class="error">Enter atleast Five</div>
+            </div></br>
+            
+            Contact Number: <input type="number" ng-model="contact" name="contactNo" required minlength="10" / >
+            <div ng-messages="myForm.contactNo.$error">
+            <div ng-message="required"  class="error">Please EnterContact</div>
+                <div ng-message="minlength"  class="error" >Enter atleast 10 digits</div>
+            </div></br>
+        
+            Gender:</br>
+            Male:<input type="radio" name="gender" ng-model="gender" value="male"></br>
+            Female <input type="radio" name="gender" ng-model="gender" value="female"></br></br>
+
+
+            Subjects : <select ng-model="selectSub">
+                <option ng-repeat="x in subjects"  >{{x}}</option>
+           </select></br></br>
+
+            Birth Date: <input type="datetime-local" ng-model="datePicker" />
+
+
+           <input type="button" ng-click="display();" value="submit" ng-model="submit"/>
+            <input type="button" ng-click="reset();" value="reset" ng-model="reset">
+</br></br>
+       </form></br>     
+
+               
+               Last Name : <span>{{lowerCase()}}</span>
+               Subjects :<span >{{selectSub}}</span>
+               Selected gender <span>{{gender}}<span>
+               Selected Date : <span>{{datePicker}}</span>
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>		
+          
+        <script src="app.js" type="text/javascript"></script>
+	</body>
+</html>

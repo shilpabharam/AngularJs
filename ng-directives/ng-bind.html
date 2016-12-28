@@ -1,0 +1,29 @@
+<html> 
+<title>AngularJS First Application</title> 
+<body ng-app='myApp' ng-controller='main'> 
+<h1>Sample Application</h1> 
+<div > 
+    <p>Enter your Name: <input type="text" ng-model="handle"></p>
+    <h1>hello {{lowerCase()}}</h1>
+    <input type="button" value="submit" ng-click="display();" />
+  
+</div> 
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"> </script> 
+
+<script>
+var myApp= angular.module('myApp', []);
+myApp.controller('main',['$scope','$filter',function($scope,$filter){
+    
+    $scope.handle =' ';
+    
+    $scope.display =  function(){
+        console.log($scope.handle);
+    }
+    
+    $scope.lowerCase = function(){
+        return $filter('lowercase')($scope.handle);
+    } 
+}]);
+</script>
+</body> 
+</html> 

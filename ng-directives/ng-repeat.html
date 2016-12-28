@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style>
+table, td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+</style>
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+<body ng-app=''>
+<div ng-init="fruits=[{name:'apple',color:'red'},
+{name:'banana',color:'yellow'},
+{name:'orange',color:'orange'}]">
+
+<p >
+<table ><th>Name:  <th>Color:
+
+<tr ng-repeat="fruit in fruits"><td>{{fruit.name}}  &nbsp;&nbsp;&nbsp;
+<td>{{fruit.color}}</tr></br>
+</table>
+</p>
+</div>
+
+</body>
+</html>
